@@ -8,6 +8,7 @@ Servo::Servo(PinName pin, int maxAngle, int minAngle) :
   pulsePin(pin), maxDegree(maxAngle), minDegree(minAngle) {}
 
 void Servo::attach(int startPos) {
+    currentDeg = startPos;
     currentPulse = DEG_TO_PULSE(startPos);
     refreshTicker.attach(callback(this, &Servo::startPulse), 
       std::chrono::microseconds(SERVO_REFRESH_RATE_US));
@@ -19,6 +20,9 @@ void Servo::detach() {
 }
 
 void Servo::write(int pos) {
+    if (pos >= maxDegree || pos <= minDegree)
+      return;
+    currentDeg = pos;
     currentPulse = DEG_TO_PULSE(pos);
 }
 
@@ -37,16 +41,8 @@ void Servo::endPulse() {
 }
 
 void Servo::increasePos() {
-    int currentDegree = read();
-    if (currentDegree >= maxDegree) {
-        return;
-    } 
-    write(++currentDegree);
+    write(++currentDeg);
 }
 void Servo::decreasePos() {
-    int currentDegree = read();
-    if (currentDegree <= minDegree) {
-        return;
-    } 
-    write(--currentDegree);
+    write(--currentDeg);
 }

@@ -1,2 +1,16 @@
 This repo will contain a python program that sends serial commands to the STM32 running
 mbed that will control the robot arm.
+
+python control.py
+
+Press Q and A letters for the base rotation
+Press W and S letters to move the shoulder 
+Press E and D letters to move the elbow
+Press R and F letters to move the wrist lateral 
+Press T and G letters for the wrist rotation
+Press Y and H letters to open or close the gripper
+
+Pressing any of the QWERTY keys increase the angle of the joint
+Pressing any of the ASDFGH keys decrease the angle of the joint
+
+To compile, see calibrate arm repo. For now it is nearly the same procedure

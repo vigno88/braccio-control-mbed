@@ -95,8 +95,9 @@ class Servo {
         Ticker refreshTicker;
         Timeout pulseTimer;
         uint16_t currentPulse;
-        uint16_t maxDegree;
-        uint16_t minDegree;
+        int16_t currentDeg;
+        int16_t maxDegree;
+        int16_t minDegree;
 
         void startPulse();
         void endPulse();
