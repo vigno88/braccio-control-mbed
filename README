@@ -1,0 +1,2 @@
+This repo will contain a python program that sends serial commands to the STM32 running
+mbed that will control the robot arm.
